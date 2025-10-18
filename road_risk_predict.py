@@ -95,7 +95,6 @@ if st.button('Predict accident risk'):
         X[7]=1
     elif(weather=='rain'):
         X[8]=1
-    st.write(X)
     X = (X - ave) / std
     X=X.view(-1,9)
     model=torch.load('model1.pth',weights_only=False)
@@ -103,4 +102,5 @@ if st.button('Predict accident risk'):
     with torch.no_grad():
         risk=model(X).item()
     st.success(f"Predicted accident risk: {risk:.2f}")
+
 
